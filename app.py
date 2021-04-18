@@ -6,7 +6,7 @@ from credentials import BOT_TOKEN, BOT_USERNAME, URL
 global bot
 global TOKEN
 TOKEN = BOT_TOKEN
-bot = telegram.Bot(token=TOKEN)
+bot = telegram.bot(token=TOKEN)
 
 # start the flask app
 app = Flask(__name__)
