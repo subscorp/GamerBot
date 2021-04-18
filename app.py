@@ -1,7 +1,9 @@
 import re
+import logging
 from flask import Flask, request
 import telegram
 from credentials import BOT_TOKEN, BOT_USERNAME, URL
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
 global bot
@@ -78,7 +80,7 @@ def hello():
 
 
 if __name__ == '__main__':
-     """Start the bot."""
+    """Start the bot."""
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
