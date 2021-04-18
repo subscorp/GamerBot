@@ -80,6 +80,7 @@ def hello():
 
 
 if __name__ == '__main__':
+    app.run(threaded=True)
     """Start the bot."""
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
@@ -105,6 +106,5 @@ if __name__ == '__main__':
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
     updater.idle()
-    app.run(threaded=True)
 
    
