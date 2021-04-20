@@ -56,7 +56,17 @@ def set_webhook():
         return "webhook setup ok"
     else:
         return "webhook setup failed"
+    
 
+@app.route('/deletewebhook', methods=['GET', 'POST'])
+def set_webhook():
+    s = bot.deletewebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
+    if s:
+        return "webhook deleted"
+    else:
+        return "webhook deletion failed"
+
+ 
 @app.route('/')
 def hello():
     return "Hello World!"
