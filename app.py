@@ -36,7 +36,7 @@ def respond():
         bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
     elif text == "/tagOri":
         message = "how are you?"
-        bot.sendMessage(chat_id=chat_id, text=message, parse_mode="[inline mention of a user](tg://user?id=138589381)")
+        bot.sendMessage(chat_id=chat_id, text=message, caption='<a href="tg://user?id=138589381">inline mention of a user</a>', parse_mode='html')
 
     else:
         try:
