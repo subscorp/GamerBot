@@ -60,7 +60,7 @@ def set_webhook():
 
 @app.route('/deletewebhook', methods=['GET', 'POST'])
 def delet_ewebhook():
-    s = bot.deletewebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
+    s = bot.deleteWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
     if s:
         return "webhook deleted"
     else:
