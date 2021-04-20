@@ -34,8 +34,8 @@ def respond():
         # send the welcoming message
         bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
     elif text == "tagOri":
-        message = "@Ori  how are you?"
-        bot.sendMessage(chat_id=chat_id, text=message)
+        message = "138589381  how are you?"
+        bot.sendMessage(chat_id=138589381, text=message)
 
     else:
         try:
