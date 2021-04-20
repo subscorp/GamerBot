@@ -26,7 +26,10 @@ def respond():
     print(f"Update.message: {update.message}")
 
     # Telegram understands UTF-8, so encode text for unicode compatibility
-    text = update.message.text.encode('utf-8').decode()
+    try:
+        text = update.message.text.encode('utf-8').decode()
+    except (AttributeError):
+        text = "/error"
     # for debugging purposes only
     print("got text message :", text)
     # the first time you chat with the bot AKA the welcoming message
@@ -40,7 +43,9 @@ def respond():
     elif text == "/tagOri":
         message = "how are you?"
         bot.sendMessage(chat_id=chat_id, text='How are you <a href="tg://user?id=138589381">ori</a>?', parse_mode='html')
-
+    elif text == "/error":
+        message = "An error occured :("
+        bot.sendMessage(chat_id=chat_id, text=message)
     else:
         try:
             # clear the message we got from any non alphabets
