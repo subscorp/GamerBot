@@ -36,7 +36,7 @@ def respond():
     if text == "/start":
         # print the welcoming message
         bot_welcome = """
-        Welcome to coolAvatar bot, the bot is using the service from http://avatars.adorable.io/ to generate cool looking avatars based on the name you enter so please enter a name and the bot will reply with an avatar for your name.
+        היי! אני משה, הגיימר בוט הידידותי! אני כאן כדי לתת לכם עדכונים על משחקים, לקשקש איתכם, וכמובן לשחק :)
         """
         # send the welcoming message
         bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
@@ -45,7 +45,7 @@ def respond():
         bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=138589381">ori</a>?', parse_mode='html')
     elif text == "/tagOr":
         message = "אור לכי לפייתן"
-        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=1189353214">ori</a>', parse_mode='html')
+        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=1189353214">or</a>', parse_mode='html')
     elif text == "/error":
         message = "An error occured :("
         bot.sendMessage(chat_id=chat_id, text=message)
