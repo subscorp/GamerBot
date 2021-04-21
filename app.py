@@ -46,6 +46,9 @@ def respond():
     elif text == "/tagOr":
         message = "לכי לפייתן"
         bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=1189353214">or</a>', parse_mode='html')
+    elif text == "/tagEla":
+        message = "אלה אלה מה קורה לה"
+        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=139725679">ela</a>', parse_mode='html')
     elif text == "/error":
         message = "An error occured :("
         bot.sendMessage(chat_id=chat_id, text=message)
