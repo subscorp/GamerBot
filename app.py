@@ -56,7 +56,7 @@ def respond():
     elif text == "/tag":
         message = "מה שיחקת לאחרונה?"
         chosen = choice(ids)
-        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id={ids[1]}">{ids[0]}</a>', parse_mode='html')
+        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id={chosen[1]}">{chosen[0]}</a>', parse_mode='html')
     else:
         try:
             # clear the message we got from any non alphabets
