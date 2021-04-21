@@ -4,6 +4,7 @@ import telegram
 from credentials import BOT_TOKEN, BOT_USERNAME, URL
 from telegram import ParseMode
 from random import choice
+from threading import Timer
 
 global bot
 global TOKEN
@@ -93,10 +94,28 @@ def delet_ewebhook():
     else:
         return "webhook deletion failed"
 
+
+@app.route('/timer', methods=['GET', 'POST'])
+def delet_ewebhook():
+    s = bot.deleteWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
+    if s:
+        return "webhook deleted"
+    else:
+        return "webhook deletion failed"
+
  
 @app.route('/')
 def hello():
     return "Hello World!"
+
+
+def send_periodically():
+    message = "מה שיחקת לאחרונה? ושמת לב ששלחתי לבד בלי תיוג? ^_^"
+    chosen = choice(ids)
+    bot.sendMessage(chat_id=1001399023645, text=f'{message} <a href="tg://user?id={chosen[1]}">{chosen[0]}</a>', parse_mode='html')
+    
+t = Timer(60, send_periodically)
+t.start()
 
 #
 if __name__ == '__main__':
