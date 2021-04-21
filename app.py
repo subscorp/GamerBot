@@ -16,6 +16,9 @@ ids = [("ori", 138589381), ("or", 1189353214), ("ela", 139725679), ("daniel", 16
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
+    t = Timer(60, send_periodically)
+    t.start()
+
     # retrieve the message in JSON and then transform it to Telegram object
     update = telegram.Update.de_json(request.get_json(force=True), bot)
 
@@ -113,9 +116,7 @@ def send_periodically():
     message = "מה שיחקת לאחרונה? ושמת לב ששלחתי לבד בלי תיוג? ^_^"
     chosen = choice(ids)
     bot.sendMessage(chat_id=1001399023645, text=f'{message} <a href="tg://user?id={chosen[1]}">{chosen[0]}</a>', parse_mode='html')
-    
-t = Timer(60, send_periodically)
-t.start()
+
 
 #
 if __name__ == '__main__':
