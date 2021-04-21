@@ -3,14 +3,14 @@ from flask import Flask, request
 import telegram
 from credentials import BOT_TOKEN, BOT_USERNAME, URL
 from telegram import ParseMode
-
+from random import choice
 
 global bot
 global TOKEN
 TOKEN = BOT_TOKEN
 bot = telegram.Bot(token=TOKEN)
-
 app = Flask(__name__)
+ids = {"ori": 138589381, "or":1189353214, "ela":139725679}
 
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
@@ -40,6 +40,7 @@ def respond():
         """
         # send the welcoming message
         bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
+        
     elif text == "/tagOri":
         message = "מה קורה?"
         bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=138589381">ori</a>?', parse_mode='html')
@@ -52,6 +53,10 @@ def respond():
     elif text == "/error":
         message = "An error occured :("
         bot.sendMessage(chat_id=chat_id, text=message)
+    elif text == "/tag":
+        message = "מה שיחקת לאחרונה?"
+        chosen = choice(ids)
+        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id={ids[chosen]}">{chosen}</a>', parse_mode='html')
     else:
         try:
             # clear the message we got from any non alphabets
