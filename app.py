@@ -5,6 +5,8 @@ from credentials import BOT_TOKEN, BOT_USERNAME, URL
 from telegram import ParseMode
 from random import choice
 from threading import Timer
+from datetime import time
+from telegram.ext import JobQueue, Updater
 
 global bot
 global TOKEN
@@ -21,7 +23,7 @@ def respond():
 
     # retrieve the message in JSON and then transform it to Telegram object
     update = telegram.Update.de_json(request.get_json(force=True), bot)
-
+    updater = Updater(TOKEN, use_context=True)
     chat_id = update.message.chat.id
     print(f"Chat ID: {chat_id}")
     msg_id = update.message.message_id
@@ -65,6 +67,9 @@ def respond():
         message = "מה שיחקת לאחרונה?"
         chosen = choice(ids)
         bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id={chosen[1]}">{chosen[0]}</a>', parse_mode='html')
+    elif text == "/reminder":
+        q = JobQueue()
+        reminder(update, updater)
     else:
         try:
             # clear the message we got from any non alphabets
@@ -98,6 +103,15 @@ def send_periodically():
     message = "מה שיחקת לאחרונה? ושמת לב ששלחתי לבד בלי תיוג? ^_^"
     chosen = choice(ids)
     bot.sendMessage(chat_id=1001399023645, text=f'{message} <a href="tg://user?id={chosen[1]}">{chosen[0]}</a>', parse_mode='html')
+
+
+def callback_alarm(context: telegram.ext.CallbackContext):
+  bot.send_message(chat_id=1001399023645, text='Hi, This is a daily reminder')
+
+
+def reminder(update, context):
+   bot.send_message(chat_id = update.effective_chat.id , text='Daily reminder has been set! You\'ll get notified at 8 AM daily')
+   context.job_queue.run_daily(callback_alarm, context=update.message.chat_id,days=(0, 1, 2, 3, 4, 5, 6),time = time(hour = 10, minute = 10, second = 10))
 
 
 #
