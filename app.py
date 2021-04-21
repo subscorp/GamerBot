@@ -10,7 +10,7 @@ global TOKEN
 TOKEN = BOT_TOKEN
 bot = telegram.Bot(token=TOKEN)
 app = Flask(__name__)
-ids = [("ori", 138589381), ("or", 1189353214), ("ela", 139725679)]
+ids = [("ori", 138589381), ("or", 1189353214), ("ela", 139725679), ("daniel", 166405779)]
 
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
@@ -42,7 +42,7 @@ def respond():
         bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
         
     elif text == "/tagOri":
-        message = "מה קורה?"
+        message = "מה קורה"
         bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=138589381">ori</a>?', parse_mode='html')
     elif text == "/tagOr":
         message = "לכי לפייתן"
@@ -50,6 +50,10 @@ def respond():
     elif text == "/tagEla":
         message = "אלה אלה מה קורה לה"
         bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=139725679">ela</a>', parse_mode='html')
+    elif text == "/tagDaniel":
+        message = "תמות יא מנמנמנמנמנמנמניאק"
+        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=166405779">daniel</a>', parse_mode='html')
+
     elif text == "/error":
         message = "An error occured :("
         bot.sendMessage(chat_id=chat_id, text=message)
