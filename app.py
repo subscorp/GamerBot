@@ -41,8 +41,11 @@ def respond():
         # send the welcoming message
         bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
     elif text == "/tagOri":
-        message = "how are you?"
-        bot.sendMessage(chat_id=chat_id, text='How are you <a href="tg://user?id=138589381">ori</a>?', parse_mode='html')
+        message = "מה קורה אורי?"
+        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=138589381">ori</a>?', parse_mode='html')
+    elif text == "/tagOr":
+        message = "אור לכי לפייתן"
+        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=1189353214">ori</a>', parse_mode='html')
     elif text == "/error":
         message = "An error occured :("
         bot.sendMessage(chat_id=chat_id, text=message)
