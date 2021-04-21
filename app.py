@@ -87,24 +87,6 @@ def set_webhook():
         return "webhook setup ok"
     else:
         return "webhook setup failed"
-    
-
-@app.route('/deletewebhook', methods=['GET', 'POST'])
-def delet_ewebhook():
-    s = bot.deleteWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
-    if s:
-        return "webhook deleted"
-    else:
-        return "webhook deletion failed"
-
-
-@app.route('/timer', methods=['GET', 'POST'])
-def delet_ewebhook():
-    s = bot.deleteWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
-    if s:
-        return "webhook deleted"
-    else:
-        return "webhook deletion failed"
 
  
 @app.route('/')
