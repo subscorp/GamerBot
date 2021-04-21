@@ -10,7 +10,7 @@ global TOKEN
 TOKEN = BOT_TOKEN
 bot = telegram.Bot(token=TOKEN)
 app = Flask(__name__)
-ids = {"ori": 138589381, "or":1189353214, "ela":139725679}
+ids = [("ori", 138589381), ("or", 1189353214), ("ela", 139725679)]
 
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
@@ -56,7 +56,7 @@ def respond():
     elif text == "/tag":
         message = "מה שיחקת לאחרונה?"
         chosen = choice(ids)
-        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id={ids[chosen]}">{chosen}</a>', parse_mode='html')
+        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id={ids[1]}">{ids[0]}</a>', parse_mode='html')
     else:
         try:
             # clear the message we got from any non alphabets
