@@ -13,9 +13,9 @@ import os
 
 global bot
 global TOKEN
-TOKEN = os.environ("BOT_TOKEN")
-BOT_USERNAME = os.environ("BOT_USERNAME")
-URL = os.environ("URL")
+TOKEN = os.environ["BOT_TOKEN"]
+BOT_USERNAME = os.environ["BOT_USERNAME"]
+URL = os.environ["URL"]
 bot = telegram.Bot(token=TOKEN)
 app = Flask(__name__)
 ids = [("ori", 138589381), ("or", 1189353214), ("ela", 139725679), ("daniel", 166405779)]
