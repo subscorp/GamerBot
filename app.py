@@ -20,8 +20,8 @@ ids = [("ori", 138589381), ("or", 1189353214), ("ela", 139725679), ("daniel", 16
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
-    t = Timer(60, send_periodically)
-    t.start()
+    #t = Timer(60, send_periodically)
+    #t.start()
 
     # retrieve the message in JSON and then transform it to Telegram object
     update = telegram.Update.de_json(request.get_json(force=True), bot)
