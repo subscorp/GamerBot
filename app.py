@@ -1,19 +1,16 @@
 import re
 from flask import Flask, request
-from telegram import Bot, Update
+import telegram
 from credentials import BOT_TOKEN, BOT_USERNAME, URL
 from random import choice
 from threading import Timer
 from datetime import time
 from telegram.ext import JobQueue, Updater
-import schedule
-from threading import Thread
-from time import sleep
 
 global bot
 global TOKEN
 TOKEN = BOT_TOKEN
-bot = Bot(token=TOKEN)
+bot = telegram.Bot(token=TOKEN)
 app = Flask(__name__)
 ids = [("ori", 138589381), ("or", 1189353214), ("ela", 139725679), ("daniel", 166405779)]
 
@@ -24,7 +21,7 @@ def respond():
     t.start()
 
     # retrieve the message in JSON and then transform it to Telegram object
-    update = Update.de_json(request.get_json(force=True), bot)
+    update = telegram.Update.de_json(request.get_json(force=True), bot)
     updater = Updater(TOKEN, use_context=True)
     chat_id = update.message.chat.id
     print(f"Chat ID: {chat_id}")
@@ -116,16 +113,6 @@ def reminder(update, context):
    context.job_queue.run_daily(callback_alarm, context=update.message.chat_id,days=(0, 1, 2, 3, 4, 5, 6),time = time(hour = 10, minute = 10, second = 10))
 
 
-#bla
-if __name__ == '__main__':
-    # Create the job in schedule.
-    #schedule.every().minute.do(function_to_run)
-    #schedule.every().saturday.at("07:00").do(function_to_run)
-
-    # Spin up a thread to run the schedule check so it doesn't block your bot.
-    # This will take the function schedule_checker which will check every second
-    # to see if the scheduled job needs to be ran.
-    #Thread(target=schedule_checker).start() 
-
-    app.run(threaded=True)
 #
+if __name__ == '__main__':
+    app.run(threaded=True)
