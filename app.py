@@ -2,7 +2,6 @@ import re
 from flask import Flask, request
 import telegram
 from credentials import BOT_TOKEN, BOT_USERNAME, URL
-from telegram import ParseMode
 from random import choice
 from threading import Timer
 from datetime import time
@@ -52,7 +51,7 @@ def respond():
         bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=138589381">ori</a>?', parse_mode='html')
     elif text == "/tagOr":
         message = "לכי לפייתן"
-        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=1189353214">or</a>', parse_mode='html')
+        bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=1189353214">or</a>!', parse_mode='html')
     elif text == "/tagEla":
         message = "אלה אלה מה קורה לה"
         bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=139725679">ela</a>', parse_mode='html')
