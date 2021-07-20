@@ -1,6 +1,6 @@
 import re
 from flask import Flask, request
-import telegram
+from telegram import Bot, Update
 from credentials import BOT_TOKEN, BOT_USERNAME, URL
 from random import choice
 from threading import Timer
@@ -13,7 +13,7 @@ from time import sleep
 global bot
 global TOKEN
 TOKEN = BOT_TOKEN
-bot = telegram.Bot(token=TOKEN)
+bot = Bot(token=TOKEN)
 app = Flask(__name__)
 ids = [("ori", 138589381), ("or", 1189353214), ("ela", 139725679), ("daniel", 166405779)]
 
@@ -24,7 +24,7 @@ def respond():
     t.start()
 
     # retrieve the message in JSON and then transform it to Telegram object
-    update = telegram.Update.de_json(request.get_json(force=True), bot)
+    update = Update.de_json(request.get_json(force=True), bot)
     updater = Updater(TOKEN, use_context=True)
     chat_id = update.message.chat.id
     print(f"Chat ID: {chat_id}")
