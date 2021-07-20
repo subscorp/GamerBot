@@ -1,3 +1,4 @@
 /env
 /__pycache__
 x.py
+credentials.py
