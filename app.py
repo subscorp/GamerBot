@@ -6,6 +6,9 @@ from random import choice
 from threading import Timer
 from datetime import time
 from telegram.ext import JobQueue, Updater
+import schedule
+from threading import Thread
+from time import sleep
 
 global bot
 global TOKEN
@@ -113,6 +116,25 @@ def reminder(update, context):
    context.job_queue.run_daily(callback_alarm, context=update.message.chat_id,days=(0, 1, 2, 3, 4, 5, 6),time = time(hour = 10, minute = 10, second = 10))
 
 
-#
+def schedule_checker():
+    while True:
+        schedule.run_pending()
+        sleep(1)
+
+
+def function_to_run():
+    bot.sendMessage(chat_id=138589381, text=f'{"Hello!"} <a href="tg://user?id=138589381">ori</a>?', parse_mode='html')
+    print("hi")
+    #return bot.send_message(some_id, "This is a message to send.")
+
 if __name__ == '__main__':
+    # Create the job in schedule.
+    schedule.every().minute.do(function_to_run)
+    #schedule.every().saturday.at("07:00").do(function_to_run)
+
+    # Spin up a thread to run the schedule check so it doesn't block your bot.
+    # This will take the function schedule_checker which will check every second
+    # to see if the scheduled job needs to be ran.
+    Thread(target=schedule_checker).start() 
+
     app.run(threaded=True)
