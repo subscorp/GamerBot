@@ -123,7 +123,7 @@ def schedule_checker():
 
 
 def function_to_run():
-    bot.sendMessage(chat_id=138589381, text=f'{"Hello!"} <a href="tg://user?id=138589381">ori</a>?', parse_mode='html')
+    bot.sendMessage(chat_id=1001399023645, text="Hello!")
     print("hi")
     #return bot.send_message(some_id, "This is a message to send.")
 
