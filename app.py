@@ -116,17 +116,7 @@ def reminder(update, context):
    context.job_queue.run_daily(callback_alarm, context=update.message.chat_id,days=(0, 1, 2, 3, 4, 5, 6),time = time(hour = 10, minute = 10, second = 10))
 
 
-def schedule_checker():
-    while True:
-        schedule.run_pending()
-        sleep(1)
-
-
-def function_to_run():
-    bot.sendMessage(chat_id=1001399023645, text="Hello!")
-    print("hi")
-    #return bot.send_message(some_id, "This is a message to send.")
-
+#bla
 if __name__ == '__main__':
     # Create the job in schedule.
     #schedule.every().minute.do(function_to_run)
