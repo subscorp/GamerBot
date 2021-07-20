@@ -6,7 +6,7 @@ from random import choice
 from threading import Timer
 from datetime import time
 from telegram.ext import JobQueue, Updater
-#import schedule
+import schedule
 from threading import Thread
 from time import sleep
 
