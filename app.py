@@ -117,6 +117,7 @@ def reminder(update, context):
 
 def schedule_checker():
     while True:
+        print("in schedule_checker")
         schedule.run_pending()
         sleep(1)
 
