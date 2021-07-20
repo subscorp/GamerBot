@@ -129,12 +129,12 @@ def function_to_run():
 
 if __name__ == '__main__':
     # Create the job in schedule.
-    schedule.every().minute.do(function_to_run)
+    #schedule.every().minute.do(function_to_run)
     #schedule.every().saturday.at("07:00").do(function_to_run)
 
     # Spin up a thread to run the schedule check so it doesn't block your bot.
     # This will take the function schedule_checker which will check every second
     # to see if the scheduled job needs to be ran.
-    Thread(target=schedule_checker).start() 
+    #Thread(target=schedule_checker).start() 
 
     app.run(threaded=True)
