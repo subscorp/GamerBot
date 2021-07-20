@@ -1,7 +1,7 @@
 import re
 from flask import Flask, request
 import telegram
-from credentials import BOT_TOKEN, BOT_USERNAME, URL
+# from credentials import BOT_TOKEN, BOT_USERNAME, URL
 from random import choice
 from threading import Timer
 from datetime import time
@@ -9,10 +9,13 @@ from telegram.ext import JobQueue, Updater
 import schedule
 from threading import Thread
 from time import sleep
+import os
 
 global bot
 global TOKEN
-TOKEN = BOT_TOKEN
+TOKEN = os.environ("BOT_TOKEN")
+BOT_USERNAME = os.environ("BOT_USERNAME")
+URL = os.environ("URL")
 bot = telegram.Bot(token=TOKEN)
 app = Flask(__name__)
 ids = [("ori", 138589381), ("or", 1189353214), ("ela", 139725679), ("daniel", 166405779)]
