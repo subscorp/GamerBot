@@ -1,4 +1,4 @@
-env
-__pycache__
-credentials
-x
+/env
+/__pycache__
+credentials.py
+x.py
