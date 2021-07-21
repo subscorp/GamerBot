@@ -121,6 +121,7 @@ def reminder(update, context):
 
 @app.route('/send_message', methods=['GET', 'POST'])
 def send_message():
+    bot.send_animation(chat_id=-1001399023645, animation="https://i.gifer.com/7Ijg.mp4")
     bot.sendMessage(chat_id=-1001399023645, text="Hello!")
     print("hi from send_message")
     return "success sending message"
