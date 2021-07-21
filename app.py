@@ -123,6 +123,7 @@ def reminder(update, context):
 def send_message():
     bot.sendMessage(chat_id=1001399023645, text="Hello!")
     print("hi from send_message")
+    return "success sending message"
 
 
 def schedule_checker():
