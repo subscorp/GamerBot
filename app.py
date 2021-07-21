@@ -119,7 +119,7 @@ def reminder(update, context):
    context.job_queue.run_daily(callback_alarm, context=update.message.chat_id,days=(0, 1, 2, 3, 4, 5, 6),time = time(hour = 10, minute = 10, second = 10))
 
 
-@app.route('/send_message{}'.format(TOKEN), methods=['POST'])
+@app.route('/send_message', methods=['GET'])
 def send_message():
     bot.sendMessage(chat_id=1001399023645, text="Hello!")
     print("hi from send_message")
