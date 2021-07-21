@@ -41,7 +41,7 @@ def respond():
         text = update.message.text.encode('utf-8').decode()
     except (AttributeError):
         if update.message.new_chat_members:
-            text = "/in except"
+            text = "/in_except"
         else:
             text = "/error"
     # for debugging purposes only
@@ -80,6 +80,8 @@ def respond():
     elif text == "/reminder":
         q = JobQueue()
         reminder(update, updater)
+    elif text == '/in_except':
+        bot.sendMessage(chat_id=chat_id, text='in except')
     else:
         try:
             # clear the message we got from any non alphabets
