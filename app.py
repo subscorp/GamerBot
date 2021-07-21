@@ -41,7 +41,7 @@ def respond():
         text = update.message.text.encode('utf-8').decode()
     except (AttributeError):
         if update.message.new_chat_members:
-            text = "/in_except"
+            text = "/Welcome!"
         else:
             text = "/error"
     # for debugging purposes only
