@@ -41,8 +41,9 @@ def respond():
         text = update.message.text.encode('utf-8').decode()
     except (AttributeError):
         if update.message.new_chat_members:
-            text = "/Welcome!"
-        text = "/error"
+            text = "/in except"
+        else:
+            text = "/error"
     # for debugging purposes only
     print("got text message :", text)
     # the first time you chat with the bot AKA the welcoming message
