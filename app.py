@@ -121,6 +121,7 @@ def reminder(update, context):
 
 @app.route('/send_message', methods=['GET'])
 def send_message():
+    return "Hi"
     bot.sendMessage(chat_id=1001399023645, text="Hello!")
     print("hi from send_message")
 
