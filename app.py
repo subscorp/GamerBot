@@ -43,6 +43,8 @@ def respond():
     except (AttributeError):
         if update.message.new_chat_members:
             text = "/Welcome!"
+        elif update.message.left_chat_member:
+            text = "/Leaving"
         else:
             text = "/error"
     # for debugging purposes only
@@ -75,6 +77,9 @@ def respond():
             message = f'Welcome stranger'
         bot.send_message(chat_id=chat_id, text=message)
         bot.sendAnimation(chat_id=chat_id, animation=get_random_gif())
+    elif text == '/Leaving':
+        message = "why did they leave us? :("
+        bot.sendMessage(chat_id=chat_id, text=message)
     elif text == "/error":
         message = "An error occured :("
         bot.sendMessage(chat_id=chat_id, text=message)
