@@ -10,6 +10,7 @@ import schedule
 from threading import Thread
 from time import sleep
 import os
+from random import choice
 
 global bot
 global TOKEN
@@ -73,6 +74,7 @@ def respond():
         except IndexError:
             message = f'Welcome stranger'
         bot.send_message(chat_id=chat_id, text=message)
+        bot.sendAnimation(chat_id=chat_id, animation=get_random_gif())
     elif text == "/error":
         message = "An error occured :("
         bot.sendMessage(chat_id=chat_id, text=message)
@@ -149,6 +151,10 @@ def function_to_run():
     print("hi")
     #return bot.send_message(some_id, "This is a message to send.")
 
+def get_random_gif():
+    with open('gifs.txt', 'r') as f:
+        lines = f.readlines()
+        return choice(lines)
 #testing
 if __name__ == '__main__':
     # Create the job in schedule.
