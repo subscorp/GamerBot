@@ -67,7 +67,7 @@ def respond():
         message = "תמות יא מנמנמנמנמנמנמניאק"
         bot.sendMessage(chat_id=chat_id, text=f'{message} <a href="tg://user?id=166405779">daniel</a>', parse_mode='html')
     elif text == '/Welcome!':
-        message = f'Welcome {update.message.new_chat_members[0]["first_name"]}'
+        message = f'Welcome {update.message["new_chat_members"][0]["first_name"]}'
         bot.send_message(chat_id=chat_id, text=message)
     elif text == "/error":
         message = "An error occured :("
