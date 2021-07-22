@@ -147,7 +147,7 @@ def send_message():
 @app.route('/get_free_games', methods=['GET', 'POST'])
 def notify_on_games():
     games = get_free_games()
-    bot.sendMessage(chat_id=-1001399023645, text='להלן משחקי האפיק החינמיים להשבוע:')
+    bot.sendMessage(chat_id=-1001399023645, text='להלן משחקי האפיק החינמיים לשבוע זה:')
     for game in games:
         bot.sendMessage(chat_id=-1001399023645, text=game)
     return "success sending free games"
