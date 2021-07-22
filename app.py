@@ -150,6 +150,7 @@ def notify_on_games():
     for game in games():
         bot.sendMessage(chat_id=-1001399023645, text='להלן משחקי האפיק החינמיים להשבוע:')
         bot.sendMessage(chat_id=-1001399023645, text=game)
+        return "success sending free games"
 
 
 def schedule_checker():
